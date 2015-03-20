@@ -2,6 +2,7 @@
 
 include("DB.php");
 include("Script.php");
+include("Salt.php");
 
 Class DB_User extends Connection{
 
@@ -10,20 +11,20 @@ Class DB_User extends Connection{
 
 		//connection a la base
 		$dbh = $this->connect();
-		$sql = "SELECT user_id,user_admin FROM user WHERE user_login = :login AND user_mdp = :mdp";
+		$sql = "SELECT pers_id,pers_type FROM personnel WHERE pers_mail = :login AND pers_mdp = :mdp";
 
 		//on envoie la requête et on bind les arguments
 		$stmt = $dbh->prepare($sql);
 		$stmt->BindValue(':login',$login);
-		$stmt->BindValue(':mdp',md5($mdp));
+		$stmt->BindValue(':mdp',md5(saltPassword($mdp));
 		
 		//renvoi vrai si les identifiants sont correct ou faux si erreur SQL ou identifiants incorrects
 		if ($stmt->execute()){
 
 			//si identifié on crée l'objet utilisateur en cours
 			if ($stmt->fetch() != null){
-				$this->id = $stmt->fetch()["id"];
-				$this->admin = $stmt->fetch()["admin"];
+				$this->id = $stmt->fetch()["pers_id"];
+				$this->type = $stmt->fetch()["pers_type"];
 				return true;
 			}else{
 				return false;
