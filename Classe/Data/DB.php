@@ -1,12 +1,12 @@
 <?php 
 
-Class Connection{
+Class DB{
 
 	const USER = 'root';
 	const PASSWORD = '';
 	const HOTE = 'localhost';
 	const PORT = '82';
-	const BASE = 'M2L';
+	const BASE = 'ppe_gdp';
 
 	function connect(){
 

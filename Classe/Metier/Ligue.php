@@ -15,10 +15,8 @@ Class Ligue{
 	function __construct($id){
 
 		$db = new Connection();
-		$Formation = new Formation();
 
 		$this->id = $id;
-		
 	}
 
 	//renvoi toutes les formations suivi par l'utilisateur
