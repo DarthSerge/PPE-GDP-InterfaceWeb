@@ -6,25 +6,15 @@ include('Script.php');
 Class Ligue{
 
 	//attributs
-	private $id;
-	private $libelle;
-	private $id_admin;
+	private $lig_id;
+	private $lig_libelle;
+	private $lig_description;
+	private $lig_administrateur_id;
+
 	private $ListePersonnel = array();
 
 	//constructeur
-	function __construct($id){
-
-		$db = new Connection();
-
-		$this->id = $id;
-	}
-
-	//renvoi toutes les formations suivi par l'utilisateur
-	function getFormationUser(){
-
-		$db = new Connection();
-
-		$this->ListeFormation = $db.getFormationUser($this->id);
+	function __construct(){
 	}
 }
 
