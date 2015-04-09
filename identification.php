@@ -1,10 +1,9 @@
 <?php 
     session_start();
-    include_once("./classe/Data/DB_Personne.php");
+    include_once("./classe/Metier/Personne.php");
 ?>
 <!DOCTYPE html>
     <html>
-         
             <head>
                     <title>Connection</title>
                     <meta charset="utf-8" />
@@ -12,17 +11,19 @@
 
              <body>
                     <?php
-
                         if (isset($_POST["login"]) && isset($_POST["mdp"])){
-                            $db = new DB_Personne;
+                            $pers = new Personne();
 
-                            //on test les identifiants de connexion
-                            if ($db->checkId($_POST["login"],$_POST["mdp"])){
-                                $_SESSION["id"] = 
-                            }
-                            else{
+                            if (!$pers->createSession($_POST["login"],$_POST["mdp"])){
+                               echo("Erreur dans les identifiants");
+                            }else{
+                                $_SESSION["id"] = $pers->getId();
+                                $_SESSION["statut_code"] = $pers->getStatutId();
+                                $_SESSION["nom"] = $pers->getNom();
+                                $_SESSION["prenom"] = $pers->getPrenom();
 
-                                echo("Identifiants incorrect !");
+                                header('location : PPE-GDP-InterfaceWeb/index.php');
+                                die();                       
                             }
                         }
                     ?>
@@ -31,6 +32,5 @@
                          <p> Mot de passe : <input type="password" name="mdp" /></p>
                          <p><input type="submit" value="Connection"></p>
                     </form>
-                
              </body>
      </html>

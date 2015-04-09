@@ -8,10 +8,10 @@ Class DB{
 	const PORT = '82';
 	const BASE = 'ppe_gdp';
 
-	function connect(){
+	protected function connect(){
 
 		//Définition des paramètre de connection PDO
-		$dsn="mysql:".self::HOTE.";port=".self::PORT.";dbname=".self::BASE;
+		$dsn ="mysql:".self::HOTE.";port=".self::PORT.";dbname=".self::BASE;
 
 		try
 		{	

@@ -1,7 +1,11 @@
 <?php 
-	
+	/*
 	function scriptAlert($alerte){
-		echo "<script> alert(".$alerte.") </script>";
-	}
-
+?>
+		<script> 
+			alert(
+			<?php".$alerte."?>
+				 ) </script>
+<?php
+	}*/
 ?>

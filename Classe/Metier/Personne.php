@@ -1,42 +1,120 @@
 <?php
 
-include('DB.php');
-include('Script.php');
+include_once('Ligue.php');
+include_once('./Classe/Data/DB_Personne.php');
 
 Class Personne{
 
 	//attributs
-	private $login;
+	private $nom;
+	private $prenom;
+	private $email;
 	private $mdp;
 	private $id;
-	private $admin;
-	private $ListeFormation = array();
+	private $statut_id;
+	private $ligue_id;
 
 	//constructeur
-	function __construct($login,$mdp){
+	function __construct(){
+	}
 
-		$db = new Connection();
-		$Formation = new Formation();
 
-		$this->login = $login;
+	//getters et setter
+	function setNom($nom){
+		$this->nom = $nom;
+	}
+
+	function getNom(){
+		return $this->nom;
+	}
+
+	function setPrenom($prenom){
+		$this->prenom = $prenom;
+	}
+
+	function getPrenom(){
+		return $this->prenom;
+	}
+
+	function setEmail($mail){
+		$this->email = $mail;
+	}
+ 
+	function getEmail(){
+		return $this->email;
+	}
+
+	function setMotDePasse($mdp){
 		$this->mdp = $mdp;
+	}
 
-		if (!$db->checkId()){
-			scriptAlert("Les identifiants saisis sont incorrects");
-			return false;
+	function getMotDePasse(){
+		return $this->mdp;
+	}
+
+	function setId($id){
+		$this->id = $id;
+	}
+
+	function getId(){
+		return $this->id;
+	}
+
+	function setStatutID($statut_id){
+		$this->statut_id = $statut_id;
+	}
+
+	function getStatutID(){
+		return $this->statut_id;
+	}
+
+	function setLigId($ligId){
+		$this->ligue_id = $ligId;
+	}
+
+	function getLigueId(){
+		return $this->ligue_id;
+	}
+
+	//test les identifiants et créer l'entité si les informations de saisie sont correctes
+	function createSession($login,$mdp){
+
+		$data = new DB_Personne();
+
+		//On test les identifiants de connexion
+		$id = $data->checkId($login,$mdp);
+
+		if ($id != 0){
+			//On récupère les informations de compte
+			$info = $data->getInfos($id);
+
+			if ($info["nom"] = ""){
+				return false;
+			}else{
+				$this->nom 			= $info["pers_nom"];
+				$this->prenom 		= $info["pers_prenom"];
+				$this->id 			= $id;
+				$this->statut_id 	= $info["pt_id"];
+				$this->ligue_id		= $info["lig_id"];
+
+				return true;
+			}
 		}else{
-			$this->ListeFormation = $Formation->getFormationUser();
-			scriptAlert("Connection réussie");
-			return true;
+			return false;
 		}
 	}
 
-	//renvoi toutes les formations suivi par l'utilisateur
-	function getFormationUser(){
+	function getTypePersonne(){
+		$data = new DB_Personne();
 
-		$db = new Connection();
+		return $data->getTypePersonne();
+	}
 
-		$this->ListeFormation = $db.getFormationUser($this->id);
+	function addPersonne(){
+
+		$data = new DB_Personne();
+
+		return $data->addPersonne($this->nom,$this->prenom,$this->nom,$this->mdp,$this->ligue_id,$this->statut_id,$this->email);
 	}
 }
 
