@@ -36,7 +36,6 @@
 		for ($i=0;$i<count($ListeSport);$i++){
 			echo("<option value=".$ListeSport[i]->getId().">".$ListeSport[i]->getLibelle()." </option>");
 		}
-
 		echo("</select>");	
 	}
 

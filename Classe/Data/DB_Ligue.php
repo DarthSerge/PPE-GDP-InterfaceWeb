@@ -2,11 +2,37 @@
 
 include_once("DB.php");
 include_once("./Classe/Metier/Ligue.php");
+include_once("./Classe/Metier/Personne.php");
 
 Class DB_Ligue extends DB{
 
-	function getPersonnelLigue($pId){
+	function getPersonnelLigue($id){
 		 
+		$retour = array();
+
+		//connection a la base
+		$dbh = $this->connect();
+		$sql = "CALL getLiguePersonne(:id)";
+
+		//on envoie la requête et on bind les paramètres
+		$stmt = $dbh->prepare($sql);
+		$stmt->BindValue(":id",$id);
+
+		if($stmt->execute()){
+			while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+			$pers = new Personne();
+			$pers->setId($row["pers_id"]);
+			$pers->setNom($row["pers_nom"]);
+			$pers->setPrenom($row["pers_prenom"]);
+
+			$retour[] = $pers;
+			}
+		return $retour;
+		}else{
+			echo("Erreur dans la requête");
+			return false;
+		}
 	}
 
 	//renvoi un objet ligue
@@ -28,9 +54,11 @@ Class DB_Ligue extends DB{
 				$Ligue->setID($resultat["lig_id"]);
 				$Ligue->setLibelle($resultat["lig_libelle"]);
 				$Ligue->setDescription($resultat["lig_description"]);
-				$Ligue->setLibelle($resultat["lig_libelle"]);
-				$Ligue->setLibelle($resultat["lig_libelle"]);
-				$Ligue->setLibelle($resultat["lig_libelle"]);
+				$Ligue->setSportId($resultat["sp_id"]);
+				$Ligue->setSportLibelle($resultat["sp_libelle"]);
+				$Ligue->setAdminId($resultat["pers_id"])
+
+				$Ligue->setListePersonnel();
 			}else{
 				echo("Requete vide");
 				return false;

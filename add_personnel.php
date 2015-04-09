@@ -44,13 +44,15 @@
                                 $pers->setPrenom($_POST["prenom"]);
                                 $pers->setMotDePasse($_POST["mdp"]);
                                 $pers->setEmail($_POST["email"]);
-                                $pers->setNom($_POST["ligue"]);
+                                $pers->setLigueId($_POST["ligue"]);
+                                $pers->setStatutId($_POST["type"]);
 
                                 if (!$pers->addPersonne()){
                                     echo("Erreur lors de la création");
                                 }else{
                                     echo("Personne bien créée");
                                     header('location : http://localhost/ppe-gdp-interfaceweb/gestion_ligue.php');
+                                    exit();
                                 }
                             }else{
                                 echo($Erreur);

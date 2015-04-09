@@ -18,6 +18,10 @@ Class Personne{
 	function __construct(){
 	}
 
+	function __construct(pId){
+
+	}
+
 
 	//getters et setter
 	function setNom($nom){
@@ -68,7 +72,7 @@ Class Personne{
 		return $this->statut_id;
 	}
 
-	function setLigId($ligId){
+	function setLigueId($ligId){
 		$this->ligue_id = $ligId;
 	}
 
@@ -104,6 +108,28 @@ Class Personne{
 		}
 	}
 
+	function getTableauAttributs(){
+		$retour = array();
+
+		$retour[] = "Id";
+		$retour[] = "Nom";
+		$retour[] = "Prenom";
+		$retour[] = "Mail";
+		$retour[] = "Statut";
+
+		return $retour;
+	}
+
+	function getIndiceAttributs($indice){
+		switch ($indice){
+			case 0 : return $this->getId(); break;
+			case 1 : return $this->getNom(); break;
+			case 2 : return $this->getPrenom(); break;
+			case 3 : return $this->getEmail(); break;
+			case 4 : return $this->getStatutId(); break;
+		}
+	}
+
 	function getTypePersonne(){
 		$data = new DB_Personne();
 
@@ -114,7 +140,7 @@ Class Personne{
 
 		$data = new DB_Personne();
 
-		return $data->addPersonne($this->nom,$this->prenom,$this->nom,$this->mdp,$this->ligue_id,$this->statut_id,$this->email);
+		return $data->addPersonne($this->nom,$this->prenom,$this->mdp,$this->ligue_id,$this->statut_id,$this->email);
 	}
 }
 

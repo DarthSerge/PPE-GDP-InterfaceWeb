@@ -13,13 +13,20 @@ Class Ligue{
 	private $description;
 	private $Sport;
 	private $Admin;
-
 	private $ListePersonnel = array();
 
 	//constructeur
 	function __construct(){
 		$this->Sport = new Sport();
 		$this->Admin = new Personne();
+	}
+
+	function getListePersonnel(){
+		return $this->ListePersonnel;
+	}
+
+	function setListePersonnel($Liste){
+		$this->ListePersonnel = $Liste;
 	}
 
 	function setId($id){
@@ -91,7 +98,9 @@ Class Ligue{
 	}
 
 	function getListePersonnel(){
+		$data = new DB_Ligue();
 
+		return $data->getPersonnelLigue($id);
 	}
 
 	//renvoi un tableau de ligue
@@ -99,6 +108,12 @@ Class Ligue{
 		$data = new DB_Ligue();
 
 		return $data->getAllLigue();
+	}
+
+	function getLigue($id){
+		$data = new DB_Ligue();
+
+		return $data->getLigue($id);
 	}
 }
 

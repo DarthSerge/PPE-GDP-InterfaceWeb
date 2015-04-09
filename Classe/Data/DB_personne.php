@@ -73,7 +73,7 @@ Class DB_Personne extends DB{
 			$type = new Type();
 			$type->setId($row["pt_id"]);
 			$type->setLibelle($row["pt_libelle"]);
-			
+
 			$retour[] = $type;
 			}
 		return $retour;

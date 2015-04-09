@@ -21,6 +21,7 @@
                                 $_SESSION["statut_code"] = $pers->getStatutId();
                                 $_SESSION["nom"] = $pers->getNom();
                                 $_SESSION["prenom"] = $pers->getPrenom();
+                                $_SESSION["lig_id"] = $pers->getLigueId();
 
                                 header('location : PPE-GDP-InterfaceWeb/index.php');
                                 die();                       
