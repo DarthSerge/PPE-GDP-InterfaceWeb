@@ -18,11 +18,6 @@ Class Personne{
 	function __construct(){
 	}
 
-	function __construct(pId){
-
-	}
-
-
 	//getters et setter
 	function setNom($nom){
 		$this->nom = $nom;
@@ -92,7 +87,7 @@ Class Personne{
 			//On récupère les informations de compte
 			$info = $data->getInfos($id);
 
-			if ($info["nom"] = ""){
+			if ($info["pers_nom"] == ""){
 				return false;
 			}else{
 				$this->nom 			= $info["pers_nom"];
@@ -103,9 +98,8 @@ Class Personne{
 
 				return true;
 			}
-		}else{
-			return false;
 		}
+		return false;
 	}
 
 	function getTableauAttributs(){
@@ -115,18 +109,16 @@ Class Personne{
 		$retour[] = "Nom";
 		$retour[] = "Prenom";
 		$retour[] = "Mail";
-		$retour[] = "Statut";
 
 		return $retour;
 	}
 
 	function getIndiceAttributs($indice){
 		switch ($indice){
-			case 0 : return $this->getId(); break;
-			case 1 : return $this->getNom(); break;
-			case 2 : return $this->getPrenom(); break;
-			case 3 : return $this->getEmail(); break;
-			case 4 : return $this->getStatutId(); break;
+			case 0 : return $this->getId(); 
+			case 1 : return $this->getNom(); 
+			case 2 : return $this->getPrenom();
+			case 3 : return $this->getEmail(); 
 		}
 	}
 
@@ -137,10 +129,27 @@ Class Personne{
 	}
 
 	function addPersonne(){
-
 		$data = new DB_Personne();
 
 		return $data->addPersonne($this->nom,$this->prenom,$this->mdp,$this->ligue_id,$this->statut_id,$this->email);
+	}
+
+	function updatePersonne(){
+		$data = new DB_Personne();
+
+		return $data->updatePersonne();
+	}
+
+	function deletePersonne($id){
+		$data = new DB_Personne();
+
+		return $data->deletePersonne($id);
+	}
+
+	function getInfos($id){
+		$data = new DB_Personne();
+
+		return $data->getInfos($id);
 	}
 }
 

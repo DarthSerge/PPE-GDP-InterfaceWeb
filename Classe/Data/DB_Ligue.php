@@ -12,7 +12,7 @@ Class DB_Ligue extends DB{
 
 		//connection a la base
 		$dbh = $this->connect();
-		$sql = "CALL getLiguePersonne(:id)";
+		$sql = "CALL getPersonneLigue(:id)";
 
 		//on envoie la requête et on bind les paramètres
 		$stmt = $dbh->prepare($sql);
@@ -25,12 +25,13 @@ Class DB_Ligue extends DB{
 			$pers->setId($row["pers_id"]);
 			$pers->setNom($row["pers_nom"]);
 			$pers->setPrenom($row["pers_prenom"]);
+			$pers->setEmail($row["pers_email"]);
 
 			$retour[] = $pers;
 			}
 		return $retour;
 		}else{
-			echo("Erreur dans la requête");
+			echo("Erreur dans la récuperation des données du personnel");
 			return false;
 		}
 	}
@@ -56,15 +57,17 @@ Class DB_Ligue extends DB{
 				$Ligue->setDescription($resultat["lig_description"]);
 				$Ligue->setSportId($resultat["sp_id"]);
 				$Ligue->setSportLibelle($resultat["sp_libelle"]);
-				$Ligue->setAdminId($resultat["pers_id"])
+				$Ligue->setAdminId($resultat["pers_id"]);
 
-				$Ligue->setListePersonnel();
+				$Ligue->setListePersonnel($Ligue->getListePersonnelBase());
+
+				return $Ligue;
 			}else{
 				echo("Requete vide");
 				return false;
 			}
 		}else{
-			echo("Erreur dans la requête");
+			echo("Erreur dans la lecture des données de ligue");
 			return false;
 		}
 	}

@@ -2,7 +2,7 @@
 
 include_once('./Classe/Data/DB_Ligue.php');
 include_once('./Classe/Technique/Script.php');
-include_once('Sport.php');
+include_once('sport.php');
 include_once('Personne.php');
 
 Class Ligue{
@@ -11,14 +11,14 @@ Class Ligue{
 	private $id;
 	private $libelle;
 	private $description;
-	private $Sport;
-	private $Admin;
+	private $sport;
+	private $admin;
 	private $ListePersonnel = array();
 
 	//constructeur
 	function __construct(){
-		$this->Sport = new Sport();
-		$this->Admin = new Personne();
+		$this->sport = new sport();
+		$this->admin = new Personne();
 	}
 
 	function getListePersonnel(){
@@ -37,16 +37,16 @@ Class Ligue{
 		return $this->id;
 	}
 
-	function setLibelle($Libelle){
-		$this->Libelle = $Libelle;
+	function setLibelle($libelle){
+		$this->libelle = $libelle;
 	}
 
 	function getLibelle(){
-		return $this->Libelle;
+		return $this->libelle;
 	}
 
-	function setDescription($Description){
-		$this->description = $Description;
+	function setDescription($description){
+		$this->description = $description;
 	}
 
 	function getDescription(){
@@ -54,53 +54,53 @@ Class Ligue{
 	}
 
 	function setSportId($sport_id){
-		$this->Sport->setId($sport_id);
+		$this->sport->setId($sport_id);
 	}
 
-	function getSportID(){
-		return $this->Sport->getId();
+	function getSportId(){
+		return $this->sport->getId();
 	}
 
-	function setSportLibelle($sport_libelle){
-		$this->Sport->setLibelle($sport_Libelle);
+	function setSportlibelle($sport_libelle){
+		$this->sport->setlibelle($sport_libelle);
 	}
 
-	function getSportLibelle(){
-		return $this->Sport->getLibelle();
+	function getSportlibelle(){
+		return $this->sport->getlibelle();
 	}
 
 	function setAdminId($id){
-		$this->Admin->setId($id);
+		$this->admin->setId($id);
 	}
 
 	function getAdminId(){
-		return $this->Admin->getId();
+		return $this->admin->getId();
 	}
 
 	function setAdminNom($nom){
-		$this->Admin->setNom($nom);
+		$this->admin->setNom($nom);
 	}
 
 	function getAdminNom(){
-		return $this->Admin->getNom();
+		return $this->admin->getNom();
 	}
 
 	function getTableauAttributs(){
 		$retour = array();
 
 		$retour[] = "Id";
-		$retour[] = "Libelle";
-		$retour[] = "Description";
-		$retour[] = "SportLibelle";
-		$retour[] = "Admin";
+		$retour[] = "libelle";
+		$retour[] = "description";
+		$retour[] = "sportlibelle";
+		$retour[] = "admin";
 
 		return $retour;
 	}
 
-	function getListePersonnel(){
+	function getListePersonnelBase(){
 		$data = new DB_Ligue();
 
-		return $data->getPersonnelLigue($id);
+		return $data->getPersonnelLigue($this->id);
 	}
 
 	//renvoi un tableau de ligue
@@ -116,5 +116,4 @@ Class Ligue{
 		return $data->getLigue($id);
 	}
 }
-
 ?>

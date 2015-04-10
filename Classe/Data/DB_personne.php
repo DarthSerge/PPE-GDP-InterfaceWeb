@@ -47,7 +47,7 @@ Class DB_Personne extends DB{
 		
 		//renvoi 
 		if ($stmt->execute()){
-			return $stmt->fetch();
+			return $stmt->fetch(PDO::FETCH_ASSOC);
 		}
 		else{
 			scriptAlert("Erreur dans la requête");
@@ -98,6 +98,20 @@ Class DB_Personne extends DB{
 		$stmt->BindValue(':ligue_id',$ligue_id);
 		$stmt->BindValue(':statut_id',$statut_id);
 		$stmt->BindValue(':mail',$mail);
+		
+		//renvoi 
+		return $stmt->execute();
+	}
+
+	function deletePersonne($id){
+
+		//connection a la base
+		$dbh = $this->connect();
+		$sql = "CALL deletePersonne(:id)";
+
+		//on envoie la requête et on bind les arguments
+		$stmt = $dbh->prepare($sql);
+		$stmt->BindValue(':id',$id);
 		
 		//renvoi 
 		return $stmt->execute();
