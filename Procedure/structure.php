@@ -18,22 +18,22 @@ function footer(){
 
 function messageOK($message){
 	?>
-        <script>
-            $(document).ready(function() {
-                $("#msgresultat").html(<?php echo("<font color=\"#96CA2D\">".$message."</font>");?>);
-            });
-        </script>
-    <?php
+		<script>
+			$(document).ready(function() {
+				$("#msgresultat").html(<?php echo("<font color=\"#96CA2D\">".$message."</font>");?>);
+			});
+		</script>
+	<?php
 }
 
 function messageNOK($message){
 	?>
-        <script>
-            $(document).ready(function() {
-                $("#msgresultat").html(<?php echo("<font color=\"#B9121B\">".$message."</font>");?>);
-            });
-        </script>
-    <?php
+		<script>
+			$(document).ready(function() {
+				$("#msgresultat").html(<?php echo("<font color=\"#B9121B\">".$message."</font>");?>);
+			});
+		</script>
+	<?php
 }
 
 ?>

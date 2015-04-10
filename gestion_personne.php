@@ -68,17 +68,19 @@
             messageNOK($Erreur);
         }
     }
-    ?>
-    <form action="gestion_personne.php" method="post">
-     <p> Nom :            <input type="text" name="nom" value=<?php echo($nom);?> /></p>
-     <p> Prénom :         <input type="text" name="prenom" value=<?php echo($prenom);?> /></p>
-     <p> Mail :           <input type="email" name="email" value=<?php echo($email);?> /></p>
-     <p> Mot de passe :   <input type="password" name="mdp" /></p>
-     <p> Répétez le mot de passe :   <input type="password" name="mdp2" /></p>
-     <p>                  <input type="submit" value="Valider"></p>
-                        <input type="hidden" name="id_personne" value=<?php echo($id);?> />
-     </form>
-    <div id="msgresultat"></div>
-<?php    
+    
+    echo("<form action=\"gestion_personne.php\" method=\"post\">\n");
+    echo("<p> Nom : <input type=\"text\" name=\"nom\" value=\"".$nom."\" /></p>\n");
+    echo("<p> Prénom : <input type=\"text\" name=\"prenom\" value=\"".$prenom."\" /></p>\n");
+    echo("<p> Mail : <input type=\"email\" name=\"email\" value=\"".$email."\" /></p>\n");
+    echo("<p> Mot de passe : <input type=\"password\" name=\"mdp\" /></p>\n");
+    echo("<p> Répétez le mot de passe : <input type=\"password\" name=\"mdp2\" /></p>\n");
+    echo("<p> <input type=\"submit\" value=\"Valider\" /></p>\n");
+    echo("<input type=\"hidden\" name=\"id_personne\" value=\"".$id."\" />\n");
+    echo("</form>\n");
+    echo("<div id=\"msgresultat\"></div>\n");
+
+    echo("<a href=\"indexAdmin.php\">Retour</a>\n");
+   
     footer();
 ?>

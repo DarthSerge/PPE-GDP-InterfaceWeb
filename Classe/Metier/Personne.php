@@ -134,10 +134,10 @@ Class Personne{
 		return $data->addPersonne($this->nom,$this->prenom,$this->mdp,$this->ligue_id,$this->statut_id,$this->email);
 	}
 
-	function updatePersonne(){
+	function updatePersonne($id){
 		$data = new DB_Personne();
 
-		return $data->updatePersonne();
+		return $data->updatePersonne($this->nom, $this->prenom, $this->email, $this->password, $id);
 	}
 
 	function deletePersonne($id){

@@ -8,6 +8,7 @@
 
      if(isset($_GET["deconnexion"])){
         session_destroy();
+        header("Location:identification.php");
     }
 
     $pers = new Personne();

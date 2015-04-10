@@ -116,6 +116,24 @@ Class DB_Personne extends DB{
 		//renvoi 
 		return $stmt->execute();
 	}
+
+	function updatePersonne($nom, $prenom, $email, $password, $id){
+
+		//connection a la base
+		$dbh = $this->connect();
+		$sql = "CALL updatePersonne(:nom, :prenom, :email, :password, :id)";
+
+		//on envoie la requête et on bind les arguments
+		$stmt = $dbh->prepare($sql);
+		$stmt->BindValue(':nom',$nom);
+		$stmt->BindValue(':prenom',$prenom);
+		$stmt->BindValue(':email',$email);
+		$stmt->BindValue(':password',md5(saltPassword($password)));
+		$stmt->BindValue(':id',$id);
+		
+		//renvoi 
+		return $stmt->execute();
+	}
 }
 
 ?>

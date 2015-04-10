@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once("./classe/Metier/Personne.php");
+    include_once("./Classe/Metier/Personne.php");
     include_once("./Procedure/structure.php");
 
     head("Connexion");
@@ -19,15 +19,14 @@
 
             header("Location:indexAdmin.php");                      
         }
-    }else{
+    }
 ?>
 <form action="identification.php" method="post">
      <p> Login : <input type="text" name="login" /></p>
      <p> Mot de passe : <input type="password" name="mdp" /></p>
-     <p><input type="submit" value="Connection"></p>
+     <p><input type="submit" value="Connexion"></p>
 </form>
 <div id="msgresultat"></div>
-<?php 
-}
+<?php
     footer();
 ?>
