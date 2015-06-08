@@ -1,0 +1,196 @@
+html {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #333333;
+	background-color: #ffffff;
+}
+
+header {
+	width: 900px;
+	margin: auto;
+}
+
+header ul {
+	width: 90%;
+	margin: auto;
+}
+
+li.nav a {
+	font-size: 20px;
+	color: #2bcebb;
+}
+
+li.nav {
+	display: inline-block;
+	margin: 20px;
+	width: 220px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+aside {
+	width: 50%;
+	margin: auto;
+}
+
+aside div {
+	color: #666666;
+	display: inline;
+	margin-right: 50px;
+}
+
+aside div span {
+	font-style: italic;
+}
+
+#bloc {
+	border: solid 2px #b7ddf2;
+	background-color: #ebf4fb;
+	margin: 0 auto;
+	width: 400px;
+	padding: 14px;
+}
+
+#bloc h1 {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+#bloc p {
+	font-size: 12px;
+	color: #666666;
+	margin-bottom: 20px;
+	border-bottom: solid 1px #b7ddf2;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+#bloc label{
+	padding: 0 30px 0 0;
+	font-weight: bold;
+	text-align: right;
+	width: 150px;
+	float: left;
+}
+
+#bloc label > span{
+	color: #666666;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	width: 140px;
+}
+
+#bloc input[type=text], #bloc input[type=password], #bloc input[type=email] {
+	float: left;
+	font-size: 12px;
+	padding: 4px 2px;
+	border: 1px solid #aacfe4;
+	width: 180px;
+	margin: 2px 0 20px 10px;
+}
+
+#bloc #boutonConnexion {
+	margin-left: 140px;
+	width: 125px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#bloc #boutonValider {
+	display: inline;
+	margin-left: 100px;
+	width: 125px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+}
+
+#bloc #boutonRetour {
+	display: inline;
+	margin-left: 20px;
+	width: 125px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#boutondeconnexion {
+	margin-left: 100px;
+	width: 125px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#boutonajout {
+	margin-left: 100px;
+	width: 200px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+div#errorLog {
+	position: absolute;
+	top: 250px;
+	left: 42pc;
+	font-weight: bold;
+	color: #BC0026;
+}
+
+div#errorPass {
+	position: absolute;
+	top: 195px;
+	left: 45pc;
+	font-weight: bold;
+	color: #BC0026;
+}
+
+#tab {
+	margin: auto;
+	margin-top: 100px;
+	width: 70%;
+	border-top: 1px solid #aacfe4;
+	border-bottom: 1px solid #aacfe4;
+	border-left: 1px solid #aacfe4;
+	border-right: 1px solid #aacfe4;
+	background-color: #ebf4fb;
+}
+
+#tab th {
+	border-bottom: 1px solid #aacfe4;
+}
+
+#tab td {
+	text-align: center;
+}

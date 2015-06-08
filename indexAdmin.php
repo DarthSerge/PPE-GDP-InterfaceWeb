@@ -6,7 +6,7 @@
 
     head("Gestion du personnel");
 
-     if(isset($_GET["deconnexion"])){
+     if (isset($_GET["deconnexion"])){
         session_destroy();
         header("Location:identification.php");
     }
@@ -16,47 +16,53 @@
 
     if (isset($_SESSION["lig_id"])){
         $Lig = $Lig->getLigue($_SESSION["lig_id"]);
-    }else{
+    } else {
         header("Location:identification.php");
     }
 
-     if(isset($_GET["supprimer"]) && $_GET["supprimer"] != ""){
-        if($pers->deletePersonne($_GET["supprimer"])){
+     if (isset($_GET["supprimer"]) && $_GET["supprimer"] != ""){
+        if ($pers->deletePersonne($_GET["supprimer"])){
             messageOK("Suppression réussie !");
-        }else{
+        } else {
             messageNOK("Echec de la suppression !");
         }
     }
-?>
-<p>Connecté en tant que : <?php echo($_SESSION["prenom"]." ".$_SESSION["nom"]); ?></p>
-<p>Gestion de la ligue :  <?php echo($Lig->getLibelle()); ?>  </p>
 
-<a href="gestion_personne.php">Ajouter une personne à la ligue</a>
+echo "<header>\n";
+    echo "<ul>\n";
+        echo "<li class=\"nav\"><img src=\"images/logoM2L.png\" title=\"logo\" alt=\"Logo de la M2L\" \></li>\n";
+        echo "<li class=\"nav\"><a href=\"gestion_personne.php\">Ajouter une personne</a></li>\n";
+        echo "<li class=\"nav\"><a href=\"?deconnexion\" id=\"deconnexion\">Se déconnecter</a></li>\n";
+    echo "</ul>\n";
+echo "</header>\n";
 
-<?php
+echo "<aside>\n";
+    echo "<div><span>Connecté en tant que :</span> ".$_SESSION["prenom"]." ".$_SESSION["nom"]."</div>";
+    echo "<div><span>Gestion de la ligue :</span> ".$Lig->getLibelle()."</div>";
+echo "</aside>\n";
 
 $Personne = $pers->getTableauAttributs();
 $PersonneLigue = $Lig->getListePersonnelBase();
 
-echo("<table border = \"1\">");
-    for($i=0;$i<count($PersonneLigue)+1;$i++){
+echo("<table id=\"tab\">");
+    for ($i=0;$i<count($PersonneLigue)+1;$i++){
         echo("<tr>");
-        for($j=0;$j<count($Personne)+2;$j++){
+        for ($j=0;$j<count($Personne)+2;$j++){
             echo("<td>");
                 if ($i==0){
                     if ($j == count($Personne)){
                         echo("Modifier");
-                    }elseif($j == count($Personne)+1){
+                    } else if ($j == count($Personne)+1){
                         echo("Supprimer");
-                    }else{
+                    } else {
                         echo($Personne[$j]);
                     }
-                }else{
+                } else {
                     if ($j == count($Personne)){
                         echo("&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"gestion_personne.php?id=".$PersonneLigue[$i-1]->getIndiceAttributs(0)."\" ><img src=\"./Images/modif.png\" title=\"Modifier l'employé\"></a>");
-                    }elseif($j == count($Personne)+1){
+                    } else if ($j == count($Personne)+1){
                         echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"javascript:if(confirm('Etes vous sûr(e) de vouloir supprimer cet employé(e) ?')){document.location.href='?supprimer=".$PersonneLigue[$i-1]->getIndiceAttributs(0)."';}\" ><img src=\"./Images/supprime.png\" title=\"Supprimer l'employé\"></a>");
-                    }else{
+                    } else {
                        echo($PersonneLigue[$i-1]->getIndiceAttributs($j));
                     }
                 }
@@ -66,7 +72,7 @@ echo("<table border = \"1\">");
     }
 echo("</table>");
 ?>
-<a href="?deconnexion">Se déconnecter</a>
+
 <div id="msgresultat"></div>
 <?php
     footer();

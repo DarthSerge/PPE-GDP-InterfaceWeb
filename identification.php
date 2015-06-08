@@ -21,11 +21,15 @@
         }
     }
 ?>
+<div id="bloc">
 <form action="identification.php" method="post">
-     <p> Login : <input type="text" name="login" /></p>
-     <p> Mot de passe : <input type="password" name="mdp" /></p>
-     <p><input type="submit" value="Connexion"></p>
+    <h1>Gestion du personnel</h1>
+    <p>Authentification</p>
+    <div><label> Email : <span>saisir une adresse valide</span></label><input type="text" name="login" /></div>
+    <div><label> Mot de passe : </label><input type="password" name="mdp" /></div>
+    <input type="submit" value="Connexion" id="boutonConnexion">
 </form>
+</div>
 <div id="msgresultat"></div>
 <?php
     footer();

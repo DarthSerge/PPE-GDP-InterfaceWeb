@@ -6,6 +6,7 @@ function head($Titre){
 	echo("<head>\n");
 	echo("<title>".$Titre."</title>\n");  
 	echo("<meta charset=\"utf-8\"/>\n");
+	echo("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/template.css\">");
 	echo("<script type=\"text/javascript\" src=\"jquery-2.1.3.min.js\"></script>\n");
 	echo("</head>\n");
 	echo("<body>\n");

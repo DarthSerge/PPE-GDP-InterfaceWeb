@@ -6,7 +6,7 @@ Class DB{
 	const PASSWORD = '';
 	const HOTE = 'localhost';
 	const PORT = '82';
-	const BASE = 'ppe_gdp';
+	const BASE = 'ppe_gdp_ninja';
 
 	protected function connect(){
 
